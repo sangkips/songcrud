@@ -1,10 +1,14 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 from . import views
 
+from .views import ArtistViewSet, SongViewSet, LyricViewSet
+
+router = routers.DefaultRouter()
+router.register(r'artist', ArtistViewSet)
+router.register(r'songs', SongViewSet)
+router.register(r'lyrics', LyricViewSet)
+
 urlpatterns = [
-    path('list/', views.listView, name='list'),
-    path('detail/<int:pk>/', views.detailView, name='detail'),
-    path('create/', views.creatView, name='list'),
-    path('update/<int:pk>/', views.updateView, name='update'),
-    path('delete//<int:pk>/', views.deleteView, name='delete'),
+    path('', include(router.urls))
 ]
