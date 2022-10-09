@@ -10,7 +10,7 @@ class ArtistSerializer(serializers.ModelSerializer):
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
-        fields = ['title', 'likes', 'date_released']
+        fields = '__all__'
 
 
 class LyricsSerializer(serializers.ModelSerializer):

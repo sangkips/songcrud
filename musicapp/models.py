@@ -15,7 +15,8 @@ class Artist(models.Model):
 class Song(models.Model):
     title = models.CharField(max_length=255)
     date_released = models.DateTimeField(auto_now_add=True)
-    likes = models.IntegerField(default=0)
+    updated_date = models.DateTimeField(auto_now=True)
+    likes = models.BooleanField(default=False, null=True, blank=True)
     artist_id = models.ForeignKey(Artist, on_delete=models.CASCADE)
 
     def __str__(self):
